@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inputField {
+  height: 200px;
+  width: 200px;
+  border-radius: 75%;
+  margin-right: 0;
+  text-align: center;
+}
+
+.btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 75%;
+  margin-left: -10;
+}
+
+.list {
+}
+
+.list-container {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+.list-number {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+}
