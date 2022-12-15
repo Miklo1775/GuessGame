@@ -1,7 +1,7 @@
 const head1 = document.querySelector(".head1");
 
 const input = document.querySelector(".input");
-const inputField = document.querySelector(".input-field");
+let inputField = document.querySelector(".input-field");
 const btn = document.querySelector(".btn");
 const list = document.querySelector(".list");
 const listContainer = document.querySelector(".list-container");
@@ -23,19 +23,24 @@ function guessNum(guess) {
     head1.textContent = "Go lower";
   } else if (guess < guess1) {
     head1.textContent = "Go higher";
-  } else {
-    head1.textContent = "Correct!";
-  }
+  } // else {
+  //   head1.textContent = "Correct!";
+  // }
 }
 let counter = 0;
 btn.addEventListener("click", function () {
-  const guess = Number(inputField.value);
+  let guess = Number(inputField.value);
   if (guess < 1) {
     head1.textContent = "Please input a valid number.";
   } else if (guess > 100) {
     head1.textContent = "Num should be < 100";
   } else if (guess >= 1 && guess <= 100) {
-    if (counter === listNumber.length) {
+    if (guess === guess1) {
+      listNumber[counter].innerHTML = `${guess}`;
+      counter = listNumber.length;
+      head1.innerHTML = "You won. Reset to try again.";
+      inputField = null;
+    } else if (counter === listNumber.length) {
       head1.textContent = "Out of tries.";
     } else {
       guessNum(guess);
