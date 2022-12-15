@@ -18,18 +18,31 @@ let guess1 = Math.trunc(Math.random() * 100 + 1);
 console.log(guess1);
 let answer = document.querySelector(".answer");
 
-function guessNum(guess) {
-  if (guess > guess1) {
-    head1.textContent = "Go lower";
-  } else if (guess < guess1) {
-    head1.textContent = "Go higher";
-  } // else {
-  //   head1.textContent = "Correct!";
-  // }
+// function guessNum(guess) {
+//   if (guess > guess1) {
+//     head1.textContent = "Go lower";
+//   } else if (guess < guess1) {
+//     head1.textContent = "Go higher";
+//   } // else {
+//   //   head1.textContent = "Correct!";
+//   // }
+
+function guessNum(difference) {
+  if (difference >= 1 && difference <= 10) {
+    head1.textContent = "It's really hot!!";
+  } else if (difference >= 11 && difference <= 25) {
+    head1.textContent = "Getting hotter!";
+  } else if (difference >= 26 && difference <= 50) {
+    head1.textContent = "Is it chilly in here?";
+  } else if (difference >= 51 && difference <= 100) {
+    head1.textContent = "Freezing cold!";
+  }
 }
+
 let counter = 0;
 btn.addEventListener("click", function () {
   let guess = Number(inputField.value);
+  let difference = Math.abs(guess - guess1);
   if (guess < 1) {
     head1.textContent = "Please input a valid number.";
   } else if (guess > 100) {
@@ -43,7 +56,7 @@ btn.addEventListener("click", function () {
     } else if (counter === listNumber.length) {
       head1.textContent = "Out of tries.";
     } else {
-      guessNum(guess);
+      guessNum(difference);
       listNumber[counter].innerHTML = `${guess}`;
       counter++;
     }
